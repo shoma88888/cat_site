@@ -1,0 +1,401 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    color: #333;
+    font-family: "Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+header {
+    background: url(img/cat-3535404_1920.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 90vh;
+    min-height: 600px;
+}
+
+/* ピンクのグラデーション */
+header::before {
+    content: " ";
+    background-image: linear-gradient(#f66, #ccc);
+    opacity: 0.7;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+header .titles {
+    color: #fff;
+    line-height: 1.4;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+header .titles h1 {
+    font-size: 50px;
+    white-space: nowrap;
+}
+
+header .titles p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+main {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto 50px;
+    padding: 0 20px;
+}
+
+.description {
+    line-height: 1.8;
+    padding: 15px;
+    background: #eee;
+    margin: 50px 0 40px 0;
+}
+
+.description p:not(:first-of-type) {
+    margin-top: 1em;
+}
+
+.articles section {
+    width: 100%;
+}
+
+.articles > section:not(:first-of-type) {
+    margin-top: 40px;
+}
+
+.articles section a {
+    border: 1px solid #888;
+    display: block;
+    transition: 0.3s;
+}
+
+/* ホバーしたときに浮かせる(パソコンの時だけ) */
+@media screen and (min-width: 769px) {
+ .articles section a:hover {
+    box-shadow: 0 2px 7px 3px  #888;
+    transform: translateY(-2px);
+    opacity: 0.8;
+ }
+}
+
+/* 背景画像の指定 */
+.articles section a .articlesImage {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 300px;
+}
+.articles .preparetion a .articlesImage {
+    background-image: url(img/white-4557097_1920.jpg);
+    background-position: center 40%;
+}
+
+.articles section a h2 {
+    font-weight: bold;
+    color: #fff;
+    font-size: 30px;
+    padding: 15px;
+    line-height: 1.2;
+}
+
+.articles section a p {
+    font-weight: bold;
+    font-size: 20px;
+    background: #fff;
+    color: #333;
+    padding: 15px;
+    line-height: 1.8;
+}
+
+.articles .preparetion a h2,
+.articles .toDo a h2 {
+    background-color: #09015f;
+}
+
+.articles .toDo a .articlesImage {
+    background-image: url(img/kittens-1916542_1920.jpg);
+    background-position: center 85%;
+}
+
+/* foodとteachを横並びにする */
+.articles .twoColumns {
+    display: flex;
+    margin-top: 40px; 
+}
+
+.articles .food,
+.articles .teach {
+    width: 48%;
+}
+/* foodとteachの間に 100-96=4% の間を開ける */
+.articles .food {
+    margin-right: 4%;
+}
+/* aタグのheightを合わせてfoodとteachの高さを揃える */
+.articles .food a,
+.articles .teach a {
+    height: 100%;
+}
+
+.articles .food a .articlesImage {
+    background-image: url(img/cat-2170494_1920.jpg);
+    background-position: center top;
+}
+
+.articles .food a h2 {
+    background-color: #af0069;
+}
+
+.articles .teach a .articlesImage {
+    background-image: url(img/cat-4803841_1920.jpg);
+    background-position: center bottom;
+}
+
+.articles .teach a h2 {
+    background-color: #55b3b1;
+}
+
+.articles .notEat a .articlesImage {
+    background-image: url(img/vegetables-1403046_1920.jpg);
+}
+
+.articles .notEat a h2 {
+    background-color: #f6c065;
+}
+
+.articles .feeling > a .articlesImage {
+    background-image: url(img/cat-1064078_1920.jpg);
+}
+
+.articles .feeling > a h2 {
+    background-color: #00af91;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+}
+
+
+/* ハンバーガーメニュー */
+.menuButton {
+    display: block;
+    height: 80px;
+    width: 80px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transition: .3s;
+    z-index: 3;
+}
+
+.menuButton div { 
+    height: 1px;
+    width: 60%;
+    background-color: #333;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: ease-out .3s;
+}
+
+.menuButton div:nth-of-type(1) {
+    transform: translate(-50%, -15px);
+}
+
+.menuButton div:nth-of-type(3) {
+    transform: translate(-50%, 15px);
+}
+
+.menuButton.active div:nth-of-type(1) {
+    transform: rotate(45deg) translate(-50%, 0);
+    transform-origin: 0% 50%;
+}
+
+.menuButton.active div:nth-of-type(2) {
+    opacity: 0;
+    transform: translate(0%, -50%);
+}
+
+.menuButton.active div:nth-of-type(3) {
+    transform: rotate(-45deg) translate(-50%, 0);
+    transform-origin: 0% 50%;
+}
+
+/* ドロワーメニュー */
+nav {
+    transform: translateX(100%);
+    transition: .3s;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    background-color: #fff;
+    font-size: 23px;
+    padding: 30px 0 30px;
+    width: 230px;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: auto;
+}
+
+nav  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+nav ul li:not(:first-of-type) {
+    margin-top: 50px;
+}
+
+nav ul li a {
+    display: block;
+    transition: 0.3s;
+}
+
+@media screen and (min-width: 769px) {
+    nav ul li a:hover {
+        border-bottom: solid 2px #333;
+        transform: translateY(-2px);
+    }
+   }
+
+nav.active {
+    transform: translateX(0%);
+}
+
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+}
+
+.mask.active {
+    opacity: 0.7;
+    visibility: visible;
+}
+
+/* ヘッダー文字アニメーション */
+@keyframes showTextFromBottom {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.textAnimation span {
+    display: inline-block;  /* translateはinline要素には効かないので、spanタグをinline-block要素にする */  
+}
+
+/* 外側のspan(親要素のspan)をoverflowhidden(内側が外側をはみ出すと見えないようになる)にする */
+.textAnimation > span {
+    overflow: hidden;
+}
+
+.textAnimation > span > span {
+    animation: showTextFromBottom ease-out 1.5s backwards;  /*animation-delayによってopacity1から始まってしまうが、backwardsによってopacity0から始まるようになる */
+}
+
+
+/* スクロールアニメーション */
+.articles .animationTarget {
+    position: relative;
+    opacity: 0;
+    transform: translateY(60px) rotate(5deg);
+    transition: 1.5s;
+
+}
+
+.articles .animationTarget.show {
+    opacity: 1;
+    transform: none;
+}
+
+
+/* レスポンシブ対応 */
+@media screen and (max-width: 768px) {
+    header .titles h1 {
+        font-size: 22px;
+    }
+
+    main {
+        width: 85%;
+        padding: 0;
+    }
+
+    .articles section > a .articlesImage {
+        height: 50vw;
+    }
+
+    .articles section > a h2 {
+        font-size: 20px;
+        padding: 10px;
+    }
+
+    .articles section > a p {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    /* foodとteachの横並び解除 */
+    .articles .twoColumns {
+        display: block;
+    }
+
+    .articles .food,
+    .articles .teach {
+        width: 100%;
+    }
+
+    .articles .teach {
+        margin-top: 40px;
+    }
+
+    .attention {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+}
